@@ -1,0 +1,26 @@
+{
+  "name": "ticketing",
+  "authors": [
+    "Luis Lizarraga <siul.al4@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "components-font-awesome": "^4.7.0",
+    "moment": "^2.15.2",
+    "toastr": "^2.1.3",
+    "font-awesome": "^4.7.0"
+  }
+}

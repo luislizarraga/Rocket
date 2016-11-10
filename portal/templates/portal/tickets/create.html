@@ -1,0 +1,69 @@
+{% extends "portal/base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+      <h4>Crear Ticket</h4>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <form action="{% url 'portal:ticket_create' %}" method="post"
+    {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}
+    class="form-horizontal" role="form">
+      <div class="form-body">
+        <div class="form-group">
+          <label class="col-md-3 control-label">
+            {{ form.status.label }}
+          </label>
+          <div class="col-md-7">
+            {{ form.status }}
+          </div>
+          {% if form.status.errors %}
+          <span class="help-block">
+            {% for error in form.status.errors %}
+              <p><strong>{{ error|escape }}</strong></p>
+            {% endfor %}
+          </span>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">
+            {{ form.assigned_user.label }}
+          </label>
+          <div class="col-md-7">
+            {{ form.assigned_user }}
+          </div>
+          {% if form.assigned_user.errors %}
+          <span class="help-block">
+            {% for error in form.assigned_user.errors %}
+              <p><strong>{{ error|escape }}</strong></p>
+            {% endfor %}
+          </span>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">
+            {{ form.description.label }}
+          </label>
+          <div class="col-md-7">
+            {{ form.description }}
+          </div>
+          {% if form.description.errors %}
+          <span class="help-block">
+            {% for error in form.description.errors %}
+              <p><strong>{{ error|escape }}</strong></p>
+            {% endfor %}
+          </span>
+          {% endif %}
+        </div>
+        <div>
+          <button type="submit" class="btn btn-success">Crear</button>
+          <a href="{% url 'portal:dashboard' %}" type="button" class="btn btn-primary">Regresar</a>
+        </div>
+        {% csrf_token %}
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

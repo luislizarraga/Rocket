@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>{% block title %} Ticketing {% endblock title %}</title>
+
+  <link rel="stylesheet" href="{% static 'libs/font-awesome/css/font-awesome.min.css' %}" />
+  <link href="{% static 'libs/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'libs/toastr/toastr.min.css' %}" rel="stylesheet">
+  <link href="{% static 'portal/css/sticky-footer.css' %}" rel="stylesheet">
+
+  {% block css %}
+  {% endblock css %}
+
+</head>
+
+<body>
+
+  <div id="wrap">
+    <div id="header">
+      {% block header %}
+      <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'portal:dashboard' %}" style="padding-left:5em">
+            <!-- <img src="#" alt="" height='26px'> -->
+          </a>
+
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <!-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-users"></i> Listado de usuarios <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#"><i class="fa fa-check-square-o"></i> Encuestadores</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-user"></i> Supervisores</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-user-plus"></i> Administradores</a>
+                </li>
+              </ul>
+            </li> -->
+            <li>
+              <a href="{% url 'portal:dashboard' %}"><i class="fa fa-home"></i> Inicio</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right" style="margin-right:10px;">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user"></i> {{ user.get_short_name }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="{% url 'portal:logout' %}"><i class="fa fa-sign-out"></i> Cerrar Sesión</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      {% endblock %}
+    </div>
+    <div class="container" id="body">
+    
+    {% block sub-nav %}
+    {% endblock %}
+    
+    {% block content %}
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Holiii</h1>
+        </div>
+      </div>
+    {% endblock %}
+
+    {% block modal %}
+    {% endblock %}
+    </div>
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-11">
+            <p class="text-muted" style="margin-top:1em">Hecho con <span class="glyphicon glyphicon-heart"></span> por <a href="#">Luis Lizárraga</a></p>
+          </div>
+          <div class="col-xs-1">
+            <p class="go-top">
+              <a href="#body">
+                <i class="fa fa-angle-up"></i>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="{% static 'libs/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'libs/toastr/toastr.min.js' %}"></script>
+  {% block js %}
+  {% endblock %}
+
+  {% block messages %}
+    {% if messages %}
+      <script type="text/javascript">
+      {% for message in messages %}
+        var $toast = toastr["{{ message.tags }}"]('{{ message }}', '');
+      {% endfor %}
+      </script>
+    {% endif %}
+  {% endblock %}
+
+</body>
+</html>
