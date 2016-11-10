@@ -3,13 +3,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.forms import Form, CharField, PasswordInput
 from django.views.generic import FormView, View
 from django.contrib.auth.models import User
+from portal.forms.security import LoginForm
 from django.shortcuts import redirect
 from django.contrib import messages
-
-
-class LoginForm(Form):
-    username = CharField()
-    password = CharField(widget=PasswordInput, max_length=200)
 
 
 class LoginView(FormView):
