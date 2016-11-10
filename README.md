@@ -1,4 +1,4 @@
-Ticket app suando Python3 con virtualenv y bower.
+Ticket app usando Python3 con virtualenv y bower.
 
 Para instalar en Ubuntu:
 
